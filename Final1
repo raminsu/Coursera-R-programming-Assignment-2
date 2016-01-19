@@ -19,12 +19,12 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x,... ) {
      if(exists('y')) {
-         message("getting cached data since inverse object exists")
-         return(y)
-  }  else { 
-         message("calculating inverse since inverse object doesn't exist")
-         makeCacheMatrix(x)
-  }
+            message("getting cached data since inverse object exists")
+            return(y)
+      }  else { 
+            message("calculating inverse since inverse object doesn't exist")
+            makeCacheMatrix(x)
+      }
 }
 
 #sample matrix is passed to the cacheSolve function
