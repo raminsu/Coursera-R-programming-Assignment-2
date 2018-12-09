@@ -1,0 +1,32 @@
+rm(list = ls())
+
+#the makeCacheMatrix function calculates the inverse of the matrix 
+#and then it caches it using <<- operator so that cacheSolve can 
+#use the cached inverse matrix 
+
+makeCacheMatrix <- function(x = matrix()) {
+      y <<- solve(x) 
+      y
+}
+
+#the cacheSolve function first checks if cached inverse exists
+#for the matrix and then it calculates inverse only if there is no
+#inverse cached for the matrix
+
+#to check if cached inverse exists we make use of exists() function 
+#the exists funtion returns false if inverse object doesn't exist
+
+cacheSolve <- function(x,... ) {
+     if(exists('y')) {
+            message("getting cached data since inverse object exists")
+            return(y)
+      }  else { 
+            message("calculating inverse since inverse object doesn't exist")
+            makeCacheMatrix(x)
+      }
+}
+
+#sample matrix is passed to the cacheSolve function
+
+one <- matrix(1:4,2,2)
+cacheSolve(one)
